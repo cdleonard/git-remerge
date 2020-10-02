@@ -20,7 +20,11 @@ logger = logging.getLogger()
 
 
 def create_parser():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+
     parser.add_argument(
         "upstream", nargs="?", help="Upstream (default is `git rev-parse @{upstream}`"
     )
