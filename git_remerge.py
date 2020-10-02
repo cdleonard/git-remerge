@@ -120,7 +120,4 @@ class Main:
 
 
 if __name__ == "__main__":
-    try:
-        Main().main()
-    except:
-        logger.error('failed', exc_info=True)
+    Main().main()
