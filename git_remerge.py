@@ -65,6 +65,9 @@ class Main:
     def main(self, argv=None):
         self.opts = create_parser().parse_args(argv)
         repo_path = pygit2.discover_repository(os.getcwd())
+        if not repo_path:
+            logger.error("Please run inside a git repository")
+            sys.exit(1)
         self.repo = pygit2.Repository(repo_path)
         try:
             self.commit_abbrev = self.repo.config.get_int("core.abbrev")
