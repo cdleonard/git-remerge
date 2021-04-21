@@ -57,7 +57,7 @@ def git_merge_source_from_message(message: str) -> typing.Optional[str]:
         re.M,
     )
     if m:
-        return 'tags/' + m.group("source")
+        return "tags/" + m.group("source")
     return None
 
 
@@ -113,7 +113,9 @@ class Main:
                         "Failed to determine merge source from message:\n%s",
                         commit.message,
                     )
-                    self.todo.insert(0, "# failed to parse commit message so merge by hexsha")
+                    self.todo.insert(
+                        0, "# failed to parse commit message so merge by hexsha"
+                    )
                     self.todo.insert(0, "exec git merge %s" % (par[1]))
                 else:
                     self.todo.insert(0, "exec git merge %s" % (merge_source))
